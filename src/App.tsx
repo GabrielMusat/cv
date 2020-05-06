@@ -17,18 +17,21 @@ interface IProps {
 interface IState {
 }
 
+const duration: number = 0
 
 class App extends React.Component<IProps, IState> {
 
     componentDidMount() {
         const {selectStage} = this.props
         selectStage("welcome")
-        setTimeout(() => selectStage("cv"), 6000)
+        setTimeout(() => selectStage("cv"), duration * 1000)
     }
 
     renderWelcomeStage(style: CSSProperties) {
         return <div style={style}>
-            <Typography style={{animation: "blink 6s linear", fontWeight: 'bold', fontFamily: "Times New Roman", fontSize: 60, color: 'white'}}>{"Welcome to Gabriel Musat´s CV"}</Typography>
+            <Typography style={{animation: "blink "+duration.toString()+"s linear", fontWeight: 'bold', fontSize: 60, color: 'white'}}>
+                {"Welcome to Gabriel Musat´s CV"}
+            </Typography>
         </div>
     }
 
@@ -39,19 +42,28 @@ class App extends React.Component<IProps, IState> {
     selectStage() {
         const color1 = "#96b8ff"
         const color2 = "#213074"
-        const style = {
+        const style: CSSProperties = {
             width: '100%',
-            height: '100%',
             display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            background: "linear-gradient(180deg, "+color1+" 0%, "+color2+" 100%)"
+            flexDirection: "column"
         }
         switch (this.props.stage) {
             case "welcome":
-                return this.renderWelcomeStage(style)
+                return this.renderWelcomeStage({
+                    ...style,
+                    height: '100%',
+                    alignItems: "center",
+                    justifyContent: "center",
+                    background: "linear-gradient(180deg, "+color1+" 0%, "+color2+" 100%)"
+                })
             case "cv":
-                return this.renderCVStage(style)
+                return this.renderCVStage({
+                    ...style,
+                    height: '100%',
+                    alignItems: "center",
+                    justifyContent: "flex-start",
+                    background: "linear-gradient(180deg, "+color1+" 0%, "+color2+" 100%)"
+                })
         }
     }
 
