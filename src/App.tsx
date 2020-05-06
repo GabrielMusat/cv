@@ -3,7 +3,6 @@ import {IStore} from "./store";
 import {actionTypes} from "./store/actionTypes";
 import {connect} from "react-redux";
 import {IDims, IStage} from "./types";
-import {Typography} from "@material-ui/core";
 import "./animations.css"
 import CV from "./sections/CV";
 
@@ -17,7 +16,7 @@ interface IProps {
 interface IState {
 }
 
-const duration: number = 3
+const duration: number = 0
 
 class App extends React.Component<IProps, IState> {
 
@@ -29,9 +28,9 @@ class App extends React.Component<IProps, IState> {
 
     renderWelcomeStage(style: CSSProperties) {
         return <div style={style}>
-            <Typography style={{animation: "blink "+duration.toString()+"s linear", fontWeight: 'bold', fontSize: 60, color: 'white'}}>
+            <span style={{animation: "blink "+duration.toString()+"s linear", fontWeight: 'bold', fontSize: 60, color: 'white'}}>
                 {"Welcome to Gabriel Musat´s CV"}
-            </Typography>
+            </span>
         </div>
     }
 
