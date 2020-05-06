@@ -8,6 +8,10 @@ import {store} from "./store";
 import {theme} from "./theme";
 import { ThemeProvider } from '@material-ui/core';
 
+window.onresize = function () {
+    store.dispatch({type: "update-dims", width: window.innerWidth, height: window.innerHeight})
+}
+
 ReactDOM.render(
     <React.StrictMode>
         <Provider store={store}>

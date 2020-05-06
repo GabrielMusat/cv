@@ -1,5 +1,7 @@
-interface IAction {
-    type: string
+interface IUpdateDims {
+    type: 'update-dims'
+    height: number
+    width: number
 }
 
-export type actionTypes = IAction
+export type actionTypes = IUpdateDims
