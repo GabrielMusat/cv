@@ -17,7 +17,7 @@ interface IProps {
 interface IState {
 }
 
-const duration: number = 0
+const duration: number = 3
 
 class App extends React.Component<IProps, IState> {
 
@@ -41,17 +41,19 @@ class App extends React.Component<IProps, IState> {
 
     selectStage() {
         const color1 = "#96b8ff"
-        const color2 = "#213074"
+        const color2 = "#273986"
+        const color3 = "#040e2b"
         const style: CSSProperties = {
             width: '100%',
             display: "flex",
-            flexDirection: "column"
+            flexDirection: "column",
+            overflowX: 'hidden',
         }
         switch (this.props.stage) {
             case "welcome":
                 return this.renderWelcomeStage({
                     ...style,
-                    height: '100%',
+                    height: this.props.dims.height,
                     alignItems: "center",
                     justifyContent: "center",
                     background: "linear-gradient(180deg, "+color1+" 0%, "+color2+" 100%)"
@@ -59,18 +61,18 @@ class App extends React.Component<IProps, IState> {
             case "cv":
                 return this.renderCVStage({
                     ...style,
-                    height: '100%',
                     alignItems: "center",
                     justifyContent: "flex-start",
-                    background: "linear-gradient(180deg, "+color1+" 0%, "+color2+" 100%)"
+                    backgroundAttachment: "fixed",
+                    background: "linear-gradient(180deg, "+color1+" 0%, "+color2+" 40%, "+color3+" 100%)"
                 })
         }
     }
 
     render() {
-        const {height, width} = this.props.dims;
+        const {width} = this.props.dims;
         return (
-            <div style={{height, width, display: "flex", flexDirection: "column", alignItems: "stretch"}}>
+            <div style={{width, display: "flex", flexDirection: "column", alignItems: "stretch"}}>
                 {this.selectStage()}
             </div>
         )
