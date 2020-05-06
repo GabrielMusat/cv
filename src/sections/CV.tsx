@@ -2,7 +2,7 @@ import {connect} from "react-redux";
 import {IStore} from "../store";
 import {actionTypes} from "../store/actionTypes";
 import React, {CSSProperties} from "react";
-import {Typography} from "@material-ui/core";
+import {Paper, Typography} from "@material-ui/core";
 import {motion} from "framer-motion";
 import {config} from "../config";
 
@@ -17,7 +17,7 @@ interface IState {
 class Element extends React.Component<IProps, IState> {
     render() {
         const {style} = this.props
-        const {name, residency, birthdate, linkedin, email, github} = config
+        const {name, residency, birthdate, linkedin, email, github, technology} = config
         return (
             <div style={{...style}}>
                 <div style={{display: "flex", alignSelf: "center", alignItems: "stretch", flexDirection: "column", width: '60%'}}>
@@ -35,6 +35,33 @@ class Element extends React.Component<IProps, IState> {
                             </motion.div>
                         </div>
                     ))}
+
+                    <img height={300} width={300} style={{borderRadius: 250, marginTop: -20, alignSelf: "center"}} src={require("../gabi.jpg")}/>
+
+                    <motion.div
+                        style={{
+                            display: "flex",
+                            backgroundColor: "#777",
+                            flexDirection: "column",
+                            alignItems: "center",
+                            borderRadius: 40,
+                            margin: 40
+                        }}>
+                        <motion.span style={{color: "white", fontWeight: 'bold', fontSize: 30, margin: 20}}>Full stack and machine learning software engineer</motion.span>
+                        <div style={{display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "center", flexWrap: "wrap"}}>
+                            {Object.entries(technology).map(([title, elements]) => (
+                                <div key={title} style={{display: "flex", flexDirection: "column", alignItems: "center", marginLeft: 30, marginRight: 30, marginTop: 10}}>
+                                    <span style={{color: "white", marginTop: 20, marginBottom: 10}}>{title}</span>
+                                    <div>
+                                        {elements.map(f => (
+                                            <img height={40} style={{margin: 3}} src={require("../icons/"+f+'.png')}/>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                        <div style={{margin: 30}}/>
+                    </motion.div>
 
                 </div>
             </div>
