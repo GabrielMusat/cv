@@ -1,7 +1,8 @@
 import update from "immutability-helper"
 import {actionTypes} from "../actionTypes";
+import {IDims} from "../../types";
 
-export const is = {
+export const is: IDims = {
     height: window.innerHeight,
     width: window.innerWidth
 }
