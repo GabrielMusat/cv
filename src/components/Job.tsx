@@ -50,11 +50,9 @@ class Element extends React.Component<IProps, IState> {
                     </div>
 
                     <div style={{display: "flex", flexDirection: side === "left"  ?"row": "row-reverse", alignItems: "center"}}>
-                                    <span style={{color: "#333", fontSize: 20, marginBottom: 20, marginLeft: 20, marginRight: 20}}>
-                                        {job.occupation}
-                                    </span>
+                        <span style={{color: "#333", fontSize: 20, marginLeft: 20, marginRight: 20}}>{job.occupation}</span>
                         <IconButton onClick={() => this.setState({selected: !selected})}>
-                            {selected ? <ExpandLess/>:<ExpandMore/>}
+                            {selected ? <ExpandLess style={{color: 'black'}}/>:<ExpandMore style={{color: 'black'}}/>}
                         </IconButton>
                     </div>
                     <AnimatePresence>
