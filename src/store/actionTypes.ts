@@ -1,4 +1,4 @@
-import {IStage} from "../types";
+import {IDialog, IStage} from "../types";
 
 interface IUpdateDims {
     type: 'update-dims'
@@ -11,4 +11,13 @@ interface ISetStage {
     stage: IStage
 }
 
-export type actionTypes = IUpdateDims | ISetStage
+interface ISetDialog {
+    type: 'open-dialog'
+    data: IDialog
+}
+
+interface ICloseDialog {
+    type: 'close-dialog'
+}
+
+export type actionTypes = IUpdateDims | ISetStage | ISetDialog | ICloseDialog

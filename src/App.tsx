@@ -5,6 +5,7 @@ import {connect} from "react-redux";
 import {IDims, IStage} from "./types";
 import "./animations.css"
 import CV from "./sections/CV";
+import InfoDialog from "./dialogs/infoDialog"
 
 
 interface IProps {
@@ -72,6 +73,7 @@ class App extends React.Component<IProps, IState> {
         const {width} = this.props.dims;
         return (
             <div style={{width, display: "flex", flexDirection: "column", alignItems: "stretch"}}>
+                <InfoDialog/>
                 {this.selectStage()}
             </div>
         )
