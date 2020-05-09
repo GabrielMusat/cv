@@ -10,3 +10,8 @@ export interface IDialog {
     techName: string
     techPurpose: string
 }
+
+export type INotification = {
+    message: string,
+    variant: 'info' | 'warning' | 'success' | 'error'
+}

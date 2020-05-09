@@ -1,4 +1,4 @@
-import {IDialog, IStage} from "../types";
+import {IDialog, INotification, IStage} from "../types";
 
 interface IUpdateDims {
     type: 'update-dims'
@@ -20,4 +20,9 @@ interface ICloseDialog {
     type: 'close-dialog'
 }
 
-export type actionTypes = IUpdateDims | ISetStage | ISetDialog | ICloseDialog
+interface ISelectNotification {
+    type: 'notify'
+    notification: null | INotification
+}
+
+export type actionTypes = IUpdateDims | ISetStage | ISetDialog | ICloseDialog | ISelectNotification

@@ -8,8 +8,14 @@ interface IProps {
 
 const f: React.FC<IProps> = (props: IProps) => (
     <motion.div
-        initial={{top: window.innerHeight}}
-        animate={{top: 0}}
+        initial={{
+            top: window.innerHeight/1.5,
+            transform: `perspective(500px) rotateX(-80deg) scale(0.3)`,
+        }}
+        animate={{
+            top: 0,
+            transform: "perspective(500px) rotateX(0deg) scale(1)"
+        }}
         transition={{duration: 1, delay: 1.3}}
         style={{
             display: "flex",
@@ -28,7 +34,10 @@ const f: React.FC<IProps> = (props: IProps) => (
                     <span style={{color: "#333", marginTop: 20, marginBottom: 10}}>{title}</span>
                     <div>
                         {elements.map(f => (
-                            <img alt={""} height={40} style={{margin: 3}} src={require("../icons/"+f+'.png')}/>
+                            <div className={"tooltip"}>
+                                <img alt={""} height={40} style={{margin: 3}} src={require("../icons/"+f+'.png')}/>
+                                <span className={"tooltiptext"} >{f}</span>
+                            </div>
                         ))}
                     </div>
                 </div>
