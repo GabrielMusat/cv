@@ -85,7 +85,7 @@ class Element extends React.Component<IProps, IState> {
                             {project.technologies.map((tech) => (
                                 <IconButton key={project.name+'_'+tech.name} style={{ cursor: "pointer", padding: 0}}
                                             onClick={() => openDialog({project: project.name, techName: tech.name, techPurpose: tech.purpose})}>
-                                    <img style={{margin: 5}} height={30} src={require('../icons/'+tech.name+'.png')}/>
+                                    <img alt={''} style={{margin: 5}} height={30} src={require('../icons/'+tech.name+'.png')}/>
                                 </IconButton>
                             ))}
                         </div>

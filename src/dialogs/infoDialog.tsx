@@ -23,7 +23,7 @@ class Element extends React.Component<IProps, IState> {
                 {dialog &&
                 <div style={{display: "flex", flexDirection: "column", alignItems: "center", padding: 20}}>
                     <div style={{display: "flex", flexDirection: "row", alignItems: "center"}}>
-                        <img height={40} style={{margin: 5}} src={require('../icons/' + dialog?.techName + '.png')}/>
+                        <img alt={''} height={40} style={{margin: 5}} src={require('../icons/' + dialog?.techName + '.png')}/>
                         <span style={{color: "#333",fontSize: 20, fontWeight: "bold"}}>{"how "+dialog?.techName + ' was used in ' + dialog?.project}</span>
                     </div>
                     <span style={{margin: 20}}>
