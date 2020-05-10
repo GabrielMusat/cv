@@ -6,7 +6,7 @@ import {InView} from "react-intersection-observer";
 import {config} from "../config";
 import {IStore} from "../store";
 import {actionTypes} from "../store/actionTypes";
-import {IDialog, INotification} from "../types";
+import {IDialog, IDims, INotification} from "../types";
 import {connect} from "react-redux";
 
 
@@ -15,7 +15,8 @@ let notifyFlag = true
 interface IProps {
     style?: CSSProperties
     side: "left" | "right"
-    job: typeof config.jobs.job1
+    job: typeof config.jobs[0]
+    dims: IDims
     openDialog: (data: IDialog) => void
     notify: (notification: INotification) => void
 }
@@ -40,7 +41,7 @@ class Element extends React.Component<IProps, IState> {
     }
 
     render() {
-        const {style, side, job, openDialog} = this.props
+        const {style, side, job, openDialog, dims: {width: w, height: h }} = this.props
         const {view, selected} = this.state
         return (
             <InView
@@ -50,7 +51,7 @@ class Element extends React.Component<IProps, IState> {
             >
                 <motion.div
                     animate={{
-                        left: view ? 0:(side === "left" ? -1:1)*window.innerWidth/2,
+                        left: view ? 0:(side === "left" ? -1:1)*w/2,
                         transform: view ? "perspective(500px) rotateY(0deg) scale(1)": `perspective(500px) rotateY(${(side === "left" ? "-":"")}80deg) scale(0.5)`,
                     }}
                     transition={{duration: 1}}
@@ -60,39 +61,39 @@ class Element extends React.Component<IProps, IState> {
                         backgroundColor: "#eee",
                         flexDirection: "column",
                         alignItems: side === "left"  ? "flex-start": "flex-end",
-                        borderRadius: 20,
+                        borderRadius: 0.02*h,
                         boxShadow: "1px 1px 3px black",
                         transformStyle: "preserve-3d"
                     }}
                 >
                     <div style={{display: "flex", flexDirection: "row", alignItems: "center"}}>
-                        <img alt={''} style={{margin: 15}} height={60} src={job.logo} />
-                        <span style={{color: "#333", fontWeight: 'bold', fontSize: 30}}>{job.corporation}</span>
-                        <span style={{color: "#333", fontSize: 20, marginLeft: 30, marginRight: 30}}>{job.timestamp}</span>
-                        <span style={{color: "#333", fontSize: 20, marginLeft: 20, marginRight: 20}}>{job.occupation}</span>
+                        <img alt={''} style={{margin: 0.015*w}} height={0.07*h} src={job.logo} />
+                        <span style={{color: "#333", fontWeight: 'bold', fontSize: 0.025*h}}>{job.corporation}</span>
+                        <span style={{color: "#333", fontSize: 0.025*h, marginLeft: 0.015*w, marginRight: 0.015*w}}>{job.timestamp}</span>
+                        <span style={{color: "#333", fontSize: 0.03*h, marginLeft: 0.015*w, marginRight: 0.015*w}}>{job.occupation}</span>
                     </div>
 
-                    <div style={{width: '90%', height: 1, background: "linear-gradient(90deg, #eee 0%, #aaa 35%, #aaa 65%, #eee 100%)", alignSelf: 'center', marginBottom: 30}}></div>
+                    <div style={{width: '90%', height: 1, background: "linear-gradient(90deg, #eee 0%, #aaa 35%, #aaa 65%, #eee 100%)", alignSelf: 'center', marginBottom: 0.03*h}}/>
 
 
                     {job.projects.map((project) => (
-                        <div key={project.name} style={{display: "flex", flexDirection: side === 'left'? "row":"row-reverse", alignItems: "center", marginLeft: 20, marginBottom: 10}}>
+                        <div key={project.name} style={{display: "flex", flexDirection: side === 'left'? "row":"row-reverse", alignItems: "center", marginLeft: 0.013*w, marginBottom: 0.01*h}}>
                             <div style={{display: "flex", flexDirection: "column", alignItems: side === 'left'? "flex-start":"flex-end"}}>
-                                <span style={{color: "#333", fontSize: 18, fontWeight: "bold", marginLeft: 10, marginRight: 10}}>{project.name}</span>
-                                <span style={{color: "#333", fontSize: 14, marginLeft: 10, marginRight: 10}}>{project.subtitle}</span>
+                                <span style={{color: "#333", fontSize: 0.023*h, fontWeight: "bold", marginLeft: 0.007*h, marginRight: 0.007*h}}>{project.name}</span>
+                                <span style={{color: "#333", fontSize: 0.017*h, marginLeft: 0.007*w, marginRight: 0.007*w}}>{project.subtitle}</span>
                             </div>
 
                             {project.technologies.map((tech) => (
                                 <IconButton key={project.name+'_'+tech.name} style={{ cursor: "pointer", padding: 0}}
                                             onClick={() => openDialog({project: project.name, techName: tech.name, techPurpose: tech.purpose})}>
-                                    <img alt={''} style={{margin: 5}} height={30} src={require('../icons/'+tech.name+'.png')}/>
+                                    <img alt={''} style={{margin: 0.003*w}} height={0.03*h} src={require('../icons/'+tech.name+'.png')}/>
                                 </IconButton>
                             ))}
                         </div>
                     ))}
 
                     <Button style={{alignSelf: "center"}} onClick={() => this.setState({selected: !selected})}>
-                        <span style={{color: "#333", marginLeft: 7, marginRight: 7, fontSize: 12}}>Tasks</span>
+                        <span style={{color: "#333", marginLeft: 0.005*w, marginRight: 0.005*w, fontSize: 0.016*h}}>Tasks</span>
                         {selected ? <ExpandLess style={{color: 'black'}}/>:<ExpandMore style={{color: 'black'}}/>}
                     </Button>
                     <AnimatePresence>
@@ -101,10 +102,10 @@ class Element extends React.Component<IProps, IState> {
                                 {[...job.tasks, ""].map((task, j) =>
                                     <motion.span
                                         initial={{height: 0, opacity: 0}}
-                                        animate={{height: 20, opacity: 1}}
+                                        animate={{height: 0.023*h, opacity: 1}}
                                         exit={{height: 0, opacity: 0}}
                                         transition={{delay: 0.05*j}}
-                                        style={{color: "#333", marginLeft: 30, marginRight: 30, fontSize: 14}}
+                                        style={{color: "#333", fontSize: 0.016*h}}
                                     >
                                         {task}
                                     </motion.span>)}</div>
@@ -118,6 +119,7 @@ class Element extends React.Component<IProps, IState> {
 }
 
 const mapStateToProps = (state: IStore) => ({
+    dims: state.dims
 });
 
 const mapDispatchToProps = (dispatch: (action: actionTypes) => void ) => ({

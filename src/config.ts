@@ -5,6 +5,7 @@ export const config = {
     email: "gabimtme@gmail.com",
     github: "https://github.com/GabrielMusat",
     linkedin: "www.linkedin.com/in/gabriel-musat",
+    job: 'Full stack and machine learning software engineer',
     about: "",
     technology: {
         "Programming languages": ["python", "javascript", "typescript", "go", "java"],
@@ -14,27 +15,23 @@ export const config = {
         "Devops": ["docker", "kubernetes", "jenkins", "gcp", "firebase", "nginx"],
         "Machine learning": ["pytorch", "tensorflow", "keras"]
     },
-    jobs: {
-        job1: {
+    jobs: [
+        {
             logo: require("./images/bat.png"),
             corporation: "Brain&Tech",
             occupation: "Software development team leader",
             timestamp: "08/2018 - Ongoing...",
             tasks: [
-                "software development team lead",
-                "React-Redux for front-end development",
-                "Python asyncio, Nodejs and Golang for back-end development",
-                "Pytorch and Tensorflow for NLP with Seq2Seq and attention models",
-                "DevOps engineering with Docker and Kubernetes for application auto scalability and automatic deployment",
-                "Google Compute Engine, Google Cloud Storage, Google Kubernetes Engine and Google Cloud SQL for application hosting",
-                "Python on containerized applications for data extraction and analysis",
-                "Jenkins and Docker for platform testing",
-                "MySql and mongodb database integration with back-end services in nodejs and Python"
+                "Software development team lead",
+                "Architecture of distributed end-to-end AI solutions",
+                "System requirement specifications based on clients needs",
+                "Front-end, back-end, dev-ops and machine learning programming",
+                "Research and selection of the most modern technologies for the projects"
             ],
             projects: [
                 {
                     name: "Ciber Brother",
-                    subtitle: "social nets monitor for minors",
+                    subtitle: "Distributed platform for social nets data extraction and AI (NLP) classification",
                     technologies: [
                         {name: "python", purpose: "Used for making the API rest that the clients use as an interface to a MySql database. Also used in containerized applications running on kubernetes, it´s main purpose is parallel data extraction from the users´s social nets"},
                         {name: "javascript", purpose: "JavaScript´s asynchronous execution works great for automating kubernetes´s pods and jobs deployment, so in this project it is used as an orchestrating module that decides when to launch some job on kubernetes"},
@@ -56,7 +53,7 @@ export const config = {
                 },
                 {
                     name: "Atenea",
-                    subtitle: "fake news management platform",
+                    subtitle: "Fake news AI detection platform and public chatbot for news veracity validation",
                     technologies: [
                         {name: "typescript", purpose: "For back-end development using Express web server framework and Socketio for real time communication with front-end. The typing gives the extra security needed for a bug-less app, and also makes the code auto-documented, for a huge back-end like this it is essential"},
                         {name: "go", purpose: "Some microservices in this project are very computational expensive, and other ones need real time huge amount of data updating with websockets. In both cases a powerful and fast language is needed, that´s wy Golang is used"},
@@ -71,7 +68,7 @@ export const config = {
                 },
                 {
                     name: "Docfy",
-                    subtitle: "documents auto-classification platform",
+                    subtitle: "AI documents auto-classification platform integrated with office 365",
                     technologies: [
                         {name: "python", purpose: "This platform relies on a single back-end written in Python´s asyncio and the framework Tornado. It is constantly reading and writing from external services like mail servers, office 365 products, etc..., so asynchronicity is basic in this case. It could have been written in Nodejs, but the platform uses AI for classifying documents, so Python is the most suitable tool for this purpose"},
                         {name: "typescript", purpose: "Front-end development is made entirely on Typescript, using the React tsx way of coding and with a strongly typed Redux´s store"},
@@ -85,23 +82,21 @@ export const config = {
                 }
             ]
         },
-        job2: {
+        {
             logo: null,
             corporation: "Autonomous",
             occupation: "Mobile application developer",
             timestamp: "02/2019 - Ongoing...",
             tasks: [
-                "React-Native for cross-platform mobile applications",
+                "Cross platform mobile applications development",
                 "Administration of 3 currently running apps on Google Play (links available)",
-                "Native Java for Android development",
-                "Backend services with Nodejs and Golang",
-                "AI integration for object detection and classification",
-                "Google Cloud Platform and Firebase for back-end deployment"
+                "AI integration with mobile apps",
+                "develop and maintain backend services"
             ],
             projects: [
                 {
                     name: "Mushroom Identifier",
-                    subtitle: "AI app for mushroom recognition",
+                    subtitle: "Android app for mushroom detection and classification using deep learning models",
                     technologies: [
                         {name: "java", purpose: "This is a native Android app, so it uses Java as it´s only programming language, it uses the Android SDK on Android Studio. Personally I prefer React-Native for mobile development, but this app needs an extreme performance as it uses real time object detection through the camera preview with resource intensive AI models"},
                         {name: "python", purpose: "As this app relies on neural network models, it´s development is made on Python using Pytorch library for model prototyping and training. The data extraction and processing pipelines are also developed on this language using other common libraries like Pandas"},
@@ -112,7 +107,7 @@ export const config = {
                 },
                 {
                     name: "Fily",
-                    subtitle: "wireless mobile to pc file uploader",
+                    subtitle: "wireless real time mobile to pc file uploader",
                     technologies: [
                         {name: "typescript", purpose: "This app has two front-ends, the web app that runs on the computer´s browser where the users want to send the files, and the mobile app that runs on the device where the files come from, both using React and React-Native respectively"},
                         {name: "go", purpose: "The back-end that connects the two front-ends is programmed in Golang. It uses websockets for real time file updating, so, when one user sends a file, the back-end immediately notifies the web app and sends it, and then the file is in the computer in milliseconds"},
@@ -125,7 +120,7 @@ export const config = {
                 },
                 {
                     name: "Counttr",
-                    subtitle: "group money management app",
+                    subtitle: "real time cloud syncing app for group expenses management",
                     technologies: [
                         {name: "javascript", purpose: "This app is written in React-Native and JavaScript, that turned out on a really fast development, but bugs are more common to appear with this language. Personally, I would have written this app in TypesScript, but at the time I started with this project i didn´t knew that programming language very well"},
                         {name: "react", purpose: "React-Native was the framework chosen for this app. It was my first mobile app written on React-Native with Redux integrated, but it´s source code is pretty good for being the first time"},
@@ -137,17 +132,15 @@ export const config = {
                 },
             ]
         },
-        job3: {
+        {
             logo: require("./images/artenea.png"),
             corporation: "Artenea 3D",
-            occupation: "product owner",
+            occupation: "Product owner and main software engineer",
             timestamp: "07/2016 - Ongoing...",
             tasks: [
                 "Product development team leader",
-                "Frontend development in React-Redux",
-                "Backend development on node's Express and socket.io framework",
-                "Raspberry-Pi/Python for IoT engineering on 3D printing machines",
-                "Google Compute Engine for back-end execution"
+                "Front-end and back-end main developer",
+                "IoT platform design for CNC machines"
             ],
             projects: [
                 {
@@ -166,26 +159,29 @@ export const config = {
                 },
             ]
         },
-        job4: {
+        {
             logo: require("./images/expleo.png"),
             corporation: "expleo",
             occupation: "security and rams software engineer",
             timestamp: "02/2018 - 08/2018",
             tasks: [
-                "High security level OS testing with Python",
-                "VBA applications programming for data management",
+                "High security level OS testing",
+                "VBA application development for data management",
                 "Software system requirements analysis",
                 "Testing and validation of critic systems on railway sector"
             ],
             projects: [
                 {
                     name: "DS3",
-                    subtitle: "maximum security level OS for critical systems",
+                    subtitle: "maximum security level OS for critical systems (railway sector)",
                     technologies: [
-                        {name: "python", purpose: "For testing critical systems and for auto-generating documentation related to the tests and to the system requirements specification. The testing framework was also integrated with an Access database and some internally developed software in order to automate all the testing pipeline"}
+                        {
+                            name: "python",
+                            purpose: "For testing critical systems and for auto-generating documentation related to the tests and to the system requirements specification. The testing framework was also integrated with an Access database and some internally developed software in order to automate all the testing pipeline"
+                        }
                     ]
                 }
             ]
         }
-    }
+    ]
 }

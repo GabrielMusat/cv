@@ -21,20 +21,20 @@ interface IState {
 
 class Element extends React.Component<IProps, IState> {
     render() {
-        const {style, dims} = this.props
-        const {name, residency, birthdate, linkedin, email, github, technology} = config
+        const {style, dims: {width: w, height: h}} = this.props
+        const {name, residency, birthdate, linkedin, email, github, job, technology} = config
         return (
             <div style={{...style}}>
-                <div style={{display: "flex", alignSelf: "center", alignItems: "stretch", flexDirection: "column", width: '60%'}}>
-                    <div style={{display: "flex", alignSelf: "center", alignItems: "stretch", justifyContent: "space-between", flexDirection: "column", width: '100%', minHeight: dims.height}}>
+                <div style={{display: "flex", alignSelf: "center", alignItems: "stretch", flexDirection: "column", width: 0.7*w}}>
+                    <div style={{display: "flex", alignSelf: "center", alignItems: "stretch", justifyContent: "space-between", flexDirection: "column", width: '100%', minHeight: h}}>
                         <PersonalData {...{name, residency, birthdate, linkedin, email, github}}/>
-                        <SelfImage size={300} />
-                        <Technologies style={{backgroundColor: "#eee", borderRadius: 40, marginBottom: 40}} technology={technology}/>
+                        <SelfImage size={h*0.3} />
+                        <Technologies style={{alignSelf: "center", backgroundColor: "#eee", borderRadius: 0.05*h, marginBottom: 0.05*h}} job={job} technology={technology}/>
                     </div>
 
-                    <span style={{color: '#eee', fontSize: 40, fontWeight: "bold", alignSelf: "center"}}>Professional experience</span>
+                    <span style={{color: '#eee', fontSize: 0.07*h, fontWeight: "bold", alignSelf: "center"}}>Professional experience</span>
 
-                    {Object.entries(config.jobs).map(([_, job], i) => (
+                    {config.jobs.map((job, i) => (
                         <Job style={{margin: 40, width: '80%'}} job={job} side={i % 2 === 0 ? 'left': 'right'}/>
                     ))}
                 </div>
