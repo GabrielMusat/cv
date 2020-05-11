@@ -51,8 +51,8 @@ class Element extends React.Component<IProps, IState> {
             >
                 <motion.div
                     animate={{
-                        left: view ? 0:(side === "left" ? -1:1)*w/2,
-                        transform: view ? "perspective(500px) rotateY(0deg) scale(1)": `perspective(500px) rotateY(${(side === "left" ? "-":"")}80deg) scale(0.5)`,
+                        left: view ? 0:(side === "left" ? -1:1)*w/1.8,
+                        transform: view ? "perspective(500px) rotateY(0deg) scale(1)": `perspective(500px) rotateY(${(side === "left" ? "-":"")}70deg) scale(0.4)`,
                     }}
                     transition={{duration: 1}}
                     style={{
@@ -68,17 +68,18 @@ class Element extends React.Component<IProps, IState> {
                 >
                     <div style={{display: "flex", flexDirection: "row", alignItems: "center"}}>
                         <img alt={''} style={{margin: 0.015*w}} height={0.07*h} src={job.logo} />
-                        <span style={{color: "#333", fontWeight: 'bold', fontSize: 0.025*h}}>{job.corporation}</span>
-                        <span style={{color: "#333", fontSize: 0.025*h, marginLeft: 0.015*w, marginRight: 0.015*w}}>{job.timestamp}</span>
-                        <span style={{color: "#333", fontSize: 0.03*h, marginLeft: 0.015*w, marginRight: 0.015*w}}>{job.occupation}</span>
+                        <div style={{marginLeft: 0.015*w, marginRight: 0.015*w, display: "flex", flexDirection: "column"}}>
+                            <span style={{color: "#333", fontWeight: 'bold', fontSize: 0.025*h}}>{job.corporation}</span>
+                            <span style={{color: "#333", fontSize: 0.015*h, marginTop: 0.01*h}}>{job.timestamp}</span>
+                        </div>
+                        <span style={{color: "#333", fontSize: 0.025*h, marginLeft: 0.015*w, marginRight: 0.015*w}}>{job.occupation}</span>
                     </div>
 
                     <div style={{width: '90%', height: 1, background: "linear-gradient(90deg, #eee 0%, #aaa 35%, #aaa 65%, #eee 100%)", alignSelf: 'center', marginBottom: 0.03*h}}/>
 
-
                     {job.projects.map((project) => (
-                        <div key={project.name} style={{display: "flex", flexDirection: side === 'left'? "row":"row-reverse", alignItems: "center", marginLeft: 0.013*w, marginBottom: 0.01*h}}>
-                            <div style={{display: "flex", flexDirection: "column", alignItems: side === 'left'? "flex-start":"flex-end"}}>
+                        <div key={project.name} style={{display: "flex", flexDirection: side === 'left'? "row":"row-reverse", alignItems: "center", alignSelf: "stretch", marginLeft: 0.007*w, marginRight: 0.007*w, marginBottom: 0.01*h}}>
+                            <div style={{display: "flex", flexDirection: "column", alignItems: "flex-start", width: '25%', marginLeft: 0.007*h, marginRight: 0.007*h}}>
                                 <span style={{color: "#333", fontSize: 0.023*h, fontWeight: "bold", marginLeft: 0.007*h, marginRight: 0.007*h}}>{project.name}</span>
                                 <span style={{color: "#333", fontSize: 0.017*h, marginLeft: 0.007*w, marginRight: 0.007*w}}>{project.subtitle}</span>
                             </div>

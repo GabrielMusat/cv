@@ -15,3 +15,8 @@ export type INotification = {
     message: string,
     variant: 'info' | 'warning' | 'success' | 'error'
 }
+
+export interface ITransition {
+    duration?: number
+    delay?: number
+}

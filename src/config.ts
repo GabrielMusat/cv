@@ -1,12 +1,14 @@
 export const config = {
-    name: "Gabriel Musat Mestre",
-    residency: "Pozuelo de Alarcón, Madrid",
-    birthdate: "Birth date: 04-12-1994",
-    email: "gabimtme@gmail.com",
-    github: "https://github.com/GabrielMusat",
-    linkedin: "www.linkedin.com/in/gabriel-musat",
+    basicInfo: {
+        name: "Gabriel Musat Mestre",
+        residency: "Pozuelo de Alarcón, Madrid",
+        birthdate: "04-12-1994",
+        email: "gabimtme@gmail.com",
+        github: "https://github.com/GabrielMusat",
+        linkedin: "https://www.linkedin.com/in/gabriel-musat"
+    },
     job: 'Full stack and machine learning software engineer',
-    about: "",
+    languages: ["spanish", "english"],
     technology: {
         "Programming languages": ["python", "javascript", "typescript", "go", "java"],
         "Frontend": ["react", "redux", "android"],
@@ -182,6 +184,18 @@ export const config = {
                     ]
                 }
             ]
+        }
+    ],
+    education: [
+        {
+            university: "UC3M",
+            title: "Master of Industrial Engineering",
+            timestamp: "09/2016 – 07/2018"
+        },
+        {
+            university: "UC3M",
+            title: "Mechanical Engineering",
+            timestamp: "09/2012 – 07/2016"
         }
     ]
 }

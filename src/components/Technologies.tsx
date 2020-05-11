@@ -3,17 +3,18 @@ import {motion} from "framer-motion";
 import {IStore} from "../store";
 import {actionTypes} from "../store/actionTypes";
 import {connect} from "react-redux";
-import {IDims} from "../types";
+import {IDims, ITransition} from "../types";
 
 interface IProps {
     style: CSSProperties
     job: string
     technology: Record<string, string[]>
     dims: IDims
+    transition: ITransition
 }
 
 const f: React.FC<IProps> = (props: IProps) => {
-    const {style, job, technology, dims: {width: w, height: h}} = props
+    const {style, transition, job, technology, dims: {width: w, height: h}} = props
     return <motion.div
         initial={{
             top: h / 1.5,
@@ -23,7 +24,7 @@ const f: React.FC<IProps> = (props: IProps) => {
             top: 0,
             transform: "perspective(500px) rotateX(0deg) scale(1)"
         }}
-        transition={{duration: 1, delay: 1.3}}
+        transition={transition}
         style={{
             display: "flex",
             position: "relative",

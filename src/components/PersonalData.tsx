@@ -1,36 +1,49 @@
-import React from "react"
+import React, {CSSProperties} from "react"
 import {motion} from "framer-motion";
 import {IStore} from "../store";
 import {actionTypes} from "../store/actionTypes";
 import {connect} from "react-redux";
-import {IDims} from "../types";
+import {IDims, ITransition} from "../types";
+import {config} from "../config";
 
 interface IProps {
-    name: string
-    residency: string
-    birthdate: string
-    linkedin: string
-    email: string
-    github: string
+    style: CSSProperties,
+    basicInfo: typeof config.basicInfo
     dims: IDims
+    transition: ITransition
 }
 
 const f: React.FC<IProps> = (props: IProps) => {
-    const {name, residency, birthdate, linkedin, email, github, dims: {width: w, height: h}} = props
-    return <div>{[[name, email], [birthdate, linkedin], [residency, github]].map(([left, right], i) => (
-        <div style={{display: "flex", flexDirection: "row", justifyContent: "space-between", marginTop: (!i ? 0.06: 0.02)*h}}>
-            <motion.div initial={{right: 0.1*w}} animate={{right: 0}} transition={{duration: 1, delay: i*0.3}} style={{position: "relative"}}>
-                <motion.span
-                    initial={{opacity: 0}} animate={{opacity: 1}} transition={{duration: 1.5, delay: i*0.3}}
-                    style={{fontWeight: "bold", fontSize: 0.024*h, color: "#eee"}}>{left}</motion.span>
-            </motion.div>
-            <motion.div initial={{left: 0.1*w}} animate={{left: 0}} transition={{duration: 1.5, delay: i*0.3}} style={{position: "relative"}}>
-                <motion.span
-                    initial={{opacity: 0}} animate={{opacity: 1}} transition={{duration: 1.5, delay: i*0.3}}
-                    style={{fontWeight: "bold", fontSize: 0.024*h, color: "#eee"}}>{right}</motion.span>
-            </motion.div>
-        </div>
-    ))}</div>
+    const {basicInfo, style, transition, dims: {width: w, height: h}} = props
+    return <motion.div
+        initial={{
+            right: w/4,
+            transform: `perspective(500px) rotateY(-80deg) scale(0.4)`
+        }}
+        animate={{
+            left: 0,
+            transform: "perspective(500px) rotateY(0deg) scale(1)"
+        }}
+        transition={transition}
+        style={{
+            display: "flex",
+            position: "relative",
+            flexDirection: "column",
+            boxShadow: "1px 1px 3px black",
+            backgroundColor: "#eee",
+            ...style
+        }}>
+        <span style={{alignSelf: "center", color: "#333", fontWeight: "bold", fontSize: 0.03*h, margin: 0.01*h}}>Basic info</span>
+        {Object.entries(basicInfo).map(([k, v]) => (
+            <div style={{display: "flex", flexDirection: "column", marginLeft: 0.007*w, marginRight: 0.007*w, marginTop: 0.015*h}}>
+                <span style={{fontWeight: "bold", fontSize: 0.017*h, color: "#333"}}>{k+':'}</span>
+                {['github', 'linkedin'].includes(k)
+                    ? <a href={v} target={'_blank'} style={{fontSize: 0.016*h, color: "#333", marginLeft: 0.005*w, marginRight: 0.005*w}}>{v}</a>
+                    : <span style={{fontSize: 0.017*h, color: "#333", marginLeft: 0.005*w, marginRight: 0.005*w}}>{v}</span>
+                }
+            </div>
+        ))}
+    </motion.div>
 }
 
 const s2p = (state: IStore) => ({
