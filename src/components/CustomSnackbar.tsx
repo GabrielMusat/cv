@@ -10,6 +10,10 @@ import Snackbar, {SnackbarProps} from '@material-ui/core/Snackbar';
 import SnackbarContent from '@material-ui/core/SnackbarContent';
 import WarningIcon from '@material-ui/icons/Warning';
 import { makeStyles } from '@material-ui/core/styles';
+import {IStore} from "../store";
+import {actionTypes} from "../store/actionTypes";
+import {connect} from "react-redux";
+import {IDims} from "../types";
 
 const variantIcon = {
     "success": CheckCircleIcon,
@@ -31,17 +35,6 @@ const useStyles1 = makeStyles(theme => ({
     warning: {
         backgroundColor: amber[700],
     },
-    icon: {
-        fontSize: 20,
-    },
-    iconVariant: {
-        opacity: 0.9,
-        marginRight: theme.spacing(1),
-    },
-    message: {
-        display: 'flex',
-        alignItems: 'center',
-    },
 }));
 
 interface CustomSnackbarProps {
@@ -49,12 +42,13 @@ interface CustomSnackbarProps {
     message: string
     onClose: any
     variant: "success" | "error" | "info" | "warning"
+    dims: IDims
 }
 
 
 function MySnackbarContentWrapper(props: CustomSnackbarProps) {
     const classes = useStyles1();
-    const { className, message, onClose, variant, ...other } = props;
+    const { className, message, onClose, variant, dims: {width: w, height: h}, ...other } = props;
     const Icon = variantIcon[variant];
 
     return (
@@ -62,20 +56,25 @@ function MySnackbarContentWrapper(props: CustomSnackbarProps) {
             className={clsx(classes[variant], className)}
             aria-describedby="client-snackbar"
             message={
-                <span id="client-snackbar" className={classes.message}>
-                    <Icon className={clsx(classes.icon, classes.iconVariant)} />
+                <span id="client-snackbar" style={{ display: 'flex', alignItems: 'center', fontSize: 0.015*h}}>
+                    <Icon style={{ fontSize: 0.03*h, opacity: 0.9, marginRight: w*0.005, }} />
                     {message}
                 </span>
             }
             action={[
-                <IconButton key="close" aria-label="close" color="inherit" onClick={onClose}>
-                    <CloseIcon className={classes.icon} />
+                <IconButton style={{padding: 0}} key="close" aria-label="close" color="inherit" onClick={onClose}>
+                    <CloseIcon style={{ fontSize: 0.03*h}} />
                 </IconButton>,
             ]}
             {...other}
         />
     );
 }
+const s2p = (state: IStore) => ({
+    dims: state.dims
+});
+
+const ConnectedCustomSnackBar = connect(s2p)(MySnackbarContentWrapper)
 
 
 interface ICustomSnackbarState {
@@ -119,7 +118,7 @@ class CustomSnackbar extends React.Component<ICustomSnackbarProps, ICustomSnackb
                 autoHideDuration={this.props.autoHideDuration}
                 onClose={this.props.onClose}
             >
-                <MySnackbarContentWrapper
+                <ConnectedCustomSnackBar
                     onClose={this.props.onClose}
                     variant={this.state.variant}
                     message={this.state.message}

@@ -21,7 +21,7 @@ interface IProps {
 interface IState {
 }
 
-const duration: number = 0
+const duration: number = 3
 
 class App extends React.Component<IProps, IState> {
 
@@ -33,8 +33,16 @@ class App extends React.Component<IProps, IState> {
 
     renderWelcomeStage(style: CSSProperties) {
         return <div style={style}>
-            <span style={{animation: "blink "+duration.toString()+"s linear", fontWeight: 'bold', fontSize: 60, color: 'white'}}>
+            <span style={{animation: "blink "+duration.toString()+"s linear", fontWeight: 'bold', textAlign: "center", fontSize: 0.04*this.props.dims.height, margin: 0.03*this.props.dims.height, color: 'white'}}>
                 {"Welcome to Gabriel Musat´s CV"}
+            </span>
+        </div>
+    }
+
+    renderTurnTheDeviceStage(style: CSSProperties) {
+        return <div style={style}>
+            <span style={{animation: "blink "+duration.toString()+"s linear", fontWeight: 'bold', textAlign: "center", fontSize: 0.04*this.props.dims.height, margin: 0.03*this.props.dims.height, color: 'white'}}>
+                {"Turn the device for a better experience"}
             </span>
         </div>
     }
@@ -52,6 +60,15 @@ class App extends React.Component<IProps, IState> {
             display: "flex",
             flexDirection: "column",
             overflowX: 'hidden',
+        }
+        if (this.props.dims.height > this.props.dims.width) {
+            return this.renderTurnTheDeviceStage({
+                ...style,
+                height: this.props.dims.height,
+                alignItems: "center",
+                justifyContent: "center",
+                background: "linear-gradient(180deg, "+color1+" 0%, "+color2+" 100%)"
+            })
         }
         switch (this.props.stage) {
             case "welcome":

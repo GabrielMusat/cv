@@ -39,7 +39,7 @@ class Element extends React.Component<IProps, IState> {
                     <span style={{color: '#eee', fontSize: 0.07*h, fontWeight: "bold", alignSelf: "center"}}>Professional experience</span>
 
                     {jobs.map((job, i) => (
-                        <Job style={{margin: 40, width: '80%'}} job={job} side={i % 2 === 0 ? 'left': 'right'}/>
+                        <Job style={{margin: 0.04*h, width: '80%'}} job={job} side={i % 2 === 0 ? 'left': 'right'}/>
                     ))}
                 </div>
             </div>
