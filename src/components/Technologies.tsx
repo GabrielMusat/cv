@@ -18,12 +18,13 @@ const f: React.FC<IProps> = (props: IProps) => {
     return <motion.div
         initial={{
             top: h / 1.5,
-            transform: `perspective(500px) rotateX(-80deg) scale(0.3)`,
+            transform: `perspective(${Math.floor(0.5*h)}px) rotateX(-80deg) scale(0.3)`,
         }}
         animate={{
             top: 0,
-            transform: "perspective(500px) rotateX(0deg) scale(1)"
+            transform: `perspective(${Math.floor(0.5*h)}px) rotateX(0deg) scale(1)`
         }}
+
         transition={transition}
         style={{
             display: "flex",
@@ -52,7 +53,7 @@ const f: React.FC<IProps> = (props: IProps) => {
                     marginRight: 0.04*w,
                     marginTop: 0.01*h
                 }}>
-                    <span style={{color: "#333", marginTop: 0.03*h, marginBottom: 0.01*h}}>{title}</span>
+                    <span style={{color: "#333", marginTop: 0.03*h, marginBottom: 0.01*h, fontSize: 0.018*h}}>{title}</span>
                     <div>
                         {elements.map(f => (
                             <div className={"tooltip"}>

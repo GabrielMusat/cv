@@ -52,7 +52,7 @@ class Element extends React.Component<IProps, IState> {
                 <motion.div
                     animate={{
                         left: view ? 0:(side === "left" ? -1:1)*w/1.8,
-                        transform: view ? "perspective(500px) rotateY(0deg) scale(1)": `perspective(500px) rotateY(${(side === "left" ? "-":"")}70deg) scale(0.4)`,
+                        transform: view ? `perspective(${0.3*w}px) rotateY(0deg) scale(1)`: `perspective(${0.3*w}px) rotateY(${(side === "left" ? "-":"")}70deg) scale(0.4)`,
                     }}
                     transition={{duration: 1}}
                     style={{

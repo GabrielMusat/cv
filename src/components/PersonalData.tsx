@@ -5,6 +5,7 @@ import {actionTypes} from "../store/actionTypes";
 import {connect} from "react-redux";
 import {IDims, ITransition} from "../types";
 import {config} from "../config";
+import {IconButton} from "@material-ui/core";
 
 interface IProps {
     style: CSSProperties,
@@ -34,15 +35,20 @@ const f: React.FC<IProps> = (props: IProps) => {
             ...style
         }}>
         <span style={{alignSelf: "center", color: "#333", fontWeight: "bold", fontSize: 0.03*h, margin: 0.01*h}}>Basic info</span>
-        {Object.entries(basicInfo).map(([k, v]) => (
+        {Object.entries(basicInfo).filter(el => !["github", "linkedin"].includes(el[0])).map(([k, v]) => (
             <div style={{display: "flex", flexDirection: "column", marginLeft: 0.007*w, marginRight: 0.007*w, marginTop: 0.015*h}}>
                 <span style={{fontWeight: "bold", fontSize: 0.017*h, color: "#333"}}>{k+':'}</span>
-                {['github', 'linkedin'].includes(k)
-                    ? <a href={v} target={'_blank'} style={{fontSize: 0.016*h, color: "#333", marginLeft: 0.005*w, marginRight: 0.005*w}}>{v}</a>
-                    : <span style={{fontSize: 0.017*h, color: "#333", marginLeft: 0.005*w, marginRight: 0.005*w}}>{v}</span>
-                }
+                <span style={{fontSize: 0.017*h, color: "#333", marginLeft: 0.005*w, marginRight: 0.005*w}}>{v}</span>
             </div>
         ))}
+        <div style={{display: "flex", flexDirection: "row", margin: 0.02*h}}>
+            {Object.entries(basicInfo).filter(el => ["github", "linkedin"].includes(el[0])).map(([k, v]) => (
+                <IconButton style={{padding: 0, marginRight: 0.01*w}} href={v} target={'_blank'}>
+                    <img alt={''} height={0.06*h} src={require('../icons/'+k+'.png')}/>
+                </IconButton>
+            ))}
+        </div>
+
     </motion.div>
 }
 
