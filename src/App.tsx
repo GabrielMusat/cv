@@ -21,7 +21,7 @@ interface IProps {
 interface IState {
 }
 
-const duration: number = 3
+const duration: number = 0
 
 class App extends React.Component<IProps, IState> {
 
