@@ -95,7 +95,7 @@ class Element extends React.Component<IProps, IState> {
 
                     <Button style={{alignSelf: "center"}} onClick={() => this.setState({selected: !selected})}>
                         <span style={{color: "#333", marginLeft: 0.005*w, marginRight: 0.005*w, fontSize: 0.016*h}}>Tasks</span>
-                        {selected ? <ExpandLess style={{color: 'black'}}/>:<ExpandMore style={{color: 'black'}}/>}
+                        {selected ? <ExpandLess style={{color: 'black', fontSize: 0.016*h}}/>:<ExpandMore style={{color: 'black', fontSize: 0.016*h}}/>}
                     </Button>
                     <AnimatePresence>
                         {selected

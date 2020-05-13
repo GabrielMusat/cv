@@ -15,3 +15,7 @@ code {
 #root {
   overflow-x: hidden;
 }
+
+html {
+  scroll-behavior: smooth;
+}
