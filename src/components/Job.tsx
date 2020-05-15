@@ -3,10 +3,9 @@ import {AnimatePresence, motion} from "framer-motion";
 import {Button, IconButton} from "@material-ui/core";
 import {ExpandLess, ExpandMore} from "@material-ui/icons";
 import {InView} from "react-intersection-observer";
-import {config} from "../config";
 import {IStore} from "../store";
 import {actionTypes} from "../store/actionTypes";
-import {IDialog, IDims, INotification} from "../types";
+import {IDialog, IDims, IJob, INotification} from "../types";
 import {connect} from "react-redux";
 
 
@@ -15,7 +14,7 @@ let notifyFlag = true
 interface IProps {
     style?: CSSProperties
     side: "left" | "right"
-    job: typeof config.jobs[0]
+    job: IJob
     dims: IDims
     openDialog: (data: IDialog) => void
     notify: (notification: INotification) => void

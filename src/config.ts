@@ -1,4 +1,6 @@
-export const config = {
+import {IConfig} from "./types";
+
+export const config: IConfig = {
     basicInfo: {
         name: "Gabriel Musat Mestre",
         residency: "Pozuelo de Alarcón, Madrid",
