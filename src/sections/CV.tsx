@@ -24,14 +24,14 @@ interface IState {
 class Element extends React.Component<IProps, IState> {
     render() {
         const {style, dims: {width: w, height: h}} = this.props
-        const {basicInfo, technology, languages, education, job, jobs} = config
+        const {basicInfo, technology, languages, education, job, jobs, mainPhoto} = config
         return (
             <div style={{...style}}>
                 <div style={{display: "flex", alignSelf: "center", alignItems: "stretch", flexDirection: "column", width: 0.7*w}}>
                     <div style={{display: "flex", alignSelf: "center", alignItems: "stretch", justifyContent: "space-between", flexDirection: "column", width: '100%', minHeight: h}}>
                         <div style={{display: "flex", flexDirection: "row", justifyContent: "space-between", flex: 1}}>
                             <PersonalData transition={{duration: 1.2, delay: 0.1}} style={{borderRadius: 0.03*h, marginTop: 0.05*h, marginBottom: 0.05*h, width: 0.15*w}} basicInfo={basicInfo}/>
-                            <SelfImage transition={{duration: 0.6, delay: 0.7}} style={{alignSelf: "flex-end", marginBottom: 0.05*h}} size={h*0.3} />
+                            <SelfImage transition={{duration: 0.6, delay: 0.7}} style={{alignSelf: "flex-end", marginBottom: 0.05*h}} size={h*0.3} mainPhoto={mainPhoto}/>
                             <Education transition={{duration: 1.2, delay: 0.1}} style={{borderRadius: 0.03*h, marginTop: 0.05*h, marginBottom: 0.05*h, width: 0.15*w}} languages={languages} education={education}/>
                         </div>
                         <Technologies transition={{duration: 1.2, delay: 0}} style={{alignSelf: "center", backgroundColor: "#eee", borderRadius: 0.05*h}} job={job} technology={technology}/>

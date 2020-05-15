@@ -8,6 +8,7 @@ import "./App.css"
 import CV from "./sections/CV";
 import InfoDialog from "./dialogs/infoDialog"
 import CustomSnackbar from "./components/CustomSnackbar";
+import {config} from "./config";
 
 
 interface IProps {
@@ -34,7 +35,7 @@ class App extends React.Component<IProps, IState> {
     renderWelcomeStage(style: CSSProperties) {
         return <div style={style}>
             <span style={{animation: "blink "+duration.toString()+"s linear", fontWeight: 'bold', textAlign: "center", fontSize: 0.04*this.props.dims.height, margin: 0.03*this.props.dims.height, color: 'white'}}>
-                {"Welcome to Gabriel Musat´s CV"}
+                {config.welcome}
             </span>
         </div>
     }

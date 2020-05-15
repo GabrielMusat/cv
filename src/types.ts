@@ -52,13 +52,15 @@ export interface IJob {
 }
 
 export interface IEducation {
-    university: string
+    university: any
     title: string
     timestamp: string
 }
 
 export interface IConfig {
+    welcome: string
     basicInfo: IBasicInfo,
+    mainPhoto: any,
     job: string
     languages: string[]
     technology: Record<string, string[]>

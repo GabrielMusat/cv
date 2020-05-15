@@ -42,7 +42,7 @@ const f: React.FC<IProps> = (props: IProps) => {
                 <div style={{display: "flex", flexDirection: "column", alignItems: "flex-end", marginTop: 0.01*h}}>
                     <div style={{display: "flex", flexDirection: "row", alignItems: "center"}}>
                         <span style={{color: "#333", fontSize: 0.015*h}}>{grade.timestamp}</span>
-                        <img style={{marginLeft: 0.01*h, marginRight: 0.01*h}} alt={''} height={0.02*h} src={require('../icons/'+grade.university+'.png')}/>
+                        <img style={{marginLeft: 0.01*h, marginRight: 0.01*h}} alt={''} height={0.02*h} src={grade.university}/>
                     </div>
                     <span style={{color: "#333", fontWeight: "bold", fontSize: 0.015*h, margin: 0.01*h}}>{grade.title}</span>
                 </div>
