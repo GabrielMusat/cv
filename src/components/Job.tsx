@@ -82,6 +82,12 @@ class Element extends React.Component<IProps, IState> {
                             <div style={{display: "flex", flexDirection: "column", alignItems: "flex-start", width: '25%', marginLeft: 0.007*h, marginRight: 0.007*h}}>
                                 <span style={{color: "#333", fontSize: 0.023*h, fontWeight: "bold", marginLeft: 0.007*h, marginRight: 0.007*h}}>{project.name}</span>
                                 <span style={{color: "#333", fontSize: 0.017*h, marginLeft: 0.007*w, marginRight: 0.007*w}}>{project.subtitle}</span>
+                                { project.link && <a href={project.link} target={'_blank'} style={{
+                                    color: "blue",
+                                    fontSize: 0.017 * h,
+                                    marginLeft: 0.007 * w,
+                                    marginRight: 0.007 * w
+                                }}>{"link to " + project.name}</a>}
                             </div>
 
                             {project.technologies.map((tech) => (

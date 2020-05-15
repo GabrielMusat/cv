@@ -34,6 +34,7 @@ export const config = {
                 {
                     name: "Ciber Brother",
                     subtitle: "Distributed platform for social nets data extraction and AI (NLP) classification",
+                    link: "",
                     technologies: [
                         {name: "python", purpose: "Used for making the API rest that the clients use as an interface to a MySql database (Aiohttp web server). Also used in containerized applications running on Kubernetes for parallel data extraction from the users social nets. And of course for AI, for development and serving of Tensorflow 2.0/Keras models"},
                         {name: "javascript", purpose: "JavaScript´s asynchronous execution works great for automating Kubernetes´s pods and jobs deployment, so in this project it is used as an orchestrating module that decides when to launch some job on Kubernetes. It´s performance is extremely good as it only has to take care of io tasks"},
@@ -56,6 +57,7 @@ export const config = {
                 {
                     name: "Atenea",
                     subtitle: "Fake news AI detection platform and public chatbot for news veracity validation",
+                    link: "",
                     technologies: [
                         {name: "typescript", purpose: "For back-end development using Express framework and Socketio for real time communication with front-end. This backend, among other things, serves as an interface to the database, where data is structured in many different tables, so the typing helps knowing what fields have the models received in each query. It is also used on the worker modules, this ones are in charge of collecting data from social nets and answer users questions and queries with a chatbot. Currently WhatsApp and Telegram are implemented"},
                         {name: "go", purpose: "Some microservices in this project are very computational expensive, and other ones need real time updating of a huge amount with websockets. In both cases a powerful and fast language is needed, that´s why Golang is used. There is one microservice that handles real time data updating, and it has some kind of diffing engine (like React) that when some data is updated, it checks the difference between the last update to each front-end connected and the current data, if there is some difference only that difference is updated to each front-end"},
@@ -71,6 +73,7 @@ export const config = {
                 {
                     name: "Docfy",
                     subtitle: "AI documents auto-classification platform integrated with office 365",
+                    link: "",
                     technologies: [
                         {name: "python", purpose: "This platform relies on a single back-end written in Python´s asyncio and Tornado framework. It is constantly reading and writing from external services like mail servers, office 365 products, etc..., so asynchronicity is needed. It could have been written in Nodejs, but the platform uses AI to classify documents, so Python is the most suitable tool for this purpose. All the libraries that do io tasks in this backend are asynchronous, for example: Motor, an asynchronous driver for MongoDb; Aiosmtplib, an asynchronous library for connecting to smtp mail servers; Aiofiles, an asynchronous library for disk reading and writing"},
                         {name: "typescript", purpose: "Front-end development is made entirely on Typescript, using the React tsx way of coding and with a strongly typed Redux´s store. The Redux´s store typing is very helpful with big apps like this one, the code assistance is very good in any IDE (Webstorm in this case)"},
@@ -99,6 +102,7 @@ export const config = {
                 {
                     name: "Mushroom Identifier",
                     subtitle: "Android app for mushroom detection and classification using deep learning models",
+                    link: "https://play.google.com/store/apps/details?id=com.gabotechindustries.mushroomIdentifier",
                     technologies: [
                         {name: "java", purpose: "This is a native Android app and it uses Java as it´s programming language. It is built with the Android SDK on Android Studio. This app needs an extreme performance as it uses real time object detection through the camera preview with resource intensive AI models (YoloV3 and Xception). It plays a lot with multi threading, as it has to take care or updating the frames coming from the camera, run AI models inference, and respond to UI user events at the same time."},
                         {name: "python", purpose: "All the AI models are developed on Python using Pytorch for model prototyping and training. The data extraction and preprocessing pipelines are also developed with this language using other common libraries like Pandas. Even though this an Android app, most of the code is Python, as there is a module for AI, another for image extraction from internet, another for image preprocessing, another for image cleaning (this ones also uses AI for detecting that a huge and yummy mushroom is present on an image)"},
@@ -110,6 +114,7 @@ export const config = {
                 {
                     name: "Fily",
                     subtitle: "wireless real time mobile to pc file uploader",
+                    link: "https://play.google.com/store/apps/details?id=com.gabotechindustries.fily",
                     technologies: [
                         {name: "typescript", purpose: "This app has two front-ends, the web app that runs on the computer´s browser where the users want to send the files, and the mobile app that runs on the device where the files come from, both using React and React-Native respectively. Both front-ends are relatively small, but TypeScript comes really handy for scalability in case the app is successful and more features are requested by users"},
                         {name: "go", purpose: "The back-end that connects the two front-ends is built with Golang. It uses websockets for real time file updating, so, when one user sends a file, the back-end immediately notifies the web app and sends it. The file is in the computer in milliseconds. This backend is built with Gin, one of the most popular web servers for Go. It is known to be one of the fastest web servers available"},
@@ -123,6 +128,7 @@ export const config = {
                 {
                     name: "Counttr",
                     subtitle: "real time cloud syncing app for group expenses management",
+                    link: "https://play.google.com/store/apps/details?id=com.countmanager",
                     technologies: [
                         {name: "javascript", purpose: "This app is built with React-Native and JavaScript. That turned out on a really fast development, but bugs are common to appear with this language. The app syncs data automatically with the backend, so the asynchronous nature of JavaScript is very useful, as http requests doesn´t block the app execution"},
                         {name: "react", purpose: "React-Native was the framework chosen for this app. It also uses a lot of libraries designed for being implemented with React-Native, mainly for UI and animations. This app has a lot of navigation, so Redux comes really handy for sharing data between sections efficiently"},
@@ -148,6 +154,7 @@ export const config = {
                 {
                     name: "Ulab",
                     subtitle: "IoT platform for 3D printer machines real time control and monitor",
+                    link: "",
                     technologies: [
                         {name: "python", purpose: "This platform has three modules: the front-end where users control their 3D printers, the back-end, and the code running inside the 3D printers (in IoT they will be called things). The 3D printer´s Python code runs inside a Raspberry Pi 3B with some kind of Debian OS and systemd installed. Asyncio handles real time data updating to the backend through websockets and serial USB communication with the 3D printer at the same time. Python also controls some hardware features like Wlan"},
                         {name: "typescript", purpose: "The back-end and the front-end are written in TypeScript. The back-end code is executed by Node in a Google Compute Engine vm instance, and the front-end is a React application integrated with Redux. The data that comes from the server has a very light typing (many records and few interfaces), it must be very flexible as this platform is prepared for any type of FDM 3D printer"},
@@ -177,6 +184,7 @@ export const config = {
                 {
                     name: "DS3",
                     subtitle: "Maximum security level OS for critical systems (railway sector)",
+                    link: "",
                     technologies: [
                         {
                             name: "python", purpose: "For testing critical systems and for auto-generating documentation related to the tests and to the system requirements specification. The testing framework was also integrated with an Access database and some internally developed software in order to automate all the testing pipeline"
