@@ -100,10 +100,14 @@ class CustomSnackbar extends React.Component<ICustomSnackbarProps, ICustomSnackb
     shouldComponentUpdate(nextProps: Readonly<ICustomSnackbarProps>, nextState: Readonly<{}>, nextContext: any): boolean {
         if (!this.props.open && nextProps.open && nextProps.message != null) {
             this.setState({open: nextProps.open, message: nextProps.message.toString(), variant: nextProps.variant})
-        }
-        if (this.props.open && !nextProps.open) {
+        } else if (this.props.open && !nextProps.open) {
             this.setState({open: false})
+        } else if (this.props.open && nextProps.open && (nextProps.message != null) && (this.props.message !== nextProps.message)) {
+            this.setState({open: false})
+            const state = {open: nextProps.open, message: nextProps.message.toString(), variant: nextProps.variant}
+            setTimeout(() => this.setState(state), 500)
         }
+
         return true;
     }
 

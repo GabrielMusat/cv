@@ -22,7 +22,7 @@ interface IProps {
 interface IState {
 }
 
-const duration: number = 4
+const duration: number = 0
 
 class App extends React.Component<IProps, IState> {
 
@@ -100,7 +100,7 @@ class App extends React.Component<IProps, IState> {
                 <CustomSnackbar
                     open={notification != null}
                     variant={notification ? notification.variant:'info'}
-                    message={notification && notification.message}
+                    message={notification?.message}
                     autoHideDuration={null}
                     onClose={closeNotification}
                 />

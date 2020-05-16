@@ -23,6 +23,7 @@ export interface ITransition {
 
 export interface IBasicInfo {
     name: string
+    pdfResume: string
     residency: string
     birthdate: string
     email: string

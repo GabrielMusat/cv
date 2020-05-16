@@ -4,6 +4,7 @@ export const config: IConfig = {
     welcome: "Welcome to awesome resume maker",
     basicInfo: {
         name: "",
+        pdfResume: "",
         residency: "",
         birthdate: "",
         email: "",

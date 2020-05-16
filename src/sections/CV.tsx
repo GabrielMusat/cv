@@ -3,9 +3,9 @@ import {IStore} from "../store";
 import {actionTypes} from "../store/actionTypes";
 import React, {CSSProperties} from "react";
 import {config} from "../config";
-import {IDims} from "../types";
+import {IDims, INotification} from "../types";
 
-import PersonalData from "../components/PersonalData";
+import PersonalData from "../components/BasicInfo";
 import SelfImage from "../components/SelfImage";
 import Technologies from "../components/Technologies";
 import Job from "../components/Job";
@@ -16,12 +16,18 @@ import {motion} from "framer-motion";
 interface IProps {
     style?: CSSProperties
     dims: IDims
+    notify: (notification: INotification) => void
 }
 
 interface IState {
 }
 
 class Element extends React.Component<IProps, IState> {
+    componentDidMount() {
+        const timeout: NodeJS.Timeout = setTimeout(() => this.props.notify({message: "You can scroll down to see job experience", variant: "info"}), 10000)
+        window.addEventListener("scroll", () => clearTimeout(timeout))
+    }
+
     render() {
         const {style, dims: {width: w, height: h}} = this.props
         const {basicInfo, technology, languages, education, job, jobs, mainPhoto} = config
@@ -56,6 +62,8 @@ const s2p = (state: IStore) => ({
     dims: state.dims
 });
 
-const d2p = (dispatch: (action: actionTypes) => void) => ({});
+const d2p = (dispatch: (action: actionTypes) => void) => ({
+    notify: (notification: INotification) => dispatch({type: "notify", notification})
+});
 
 export default connect(s2p, d2p)(Element);
