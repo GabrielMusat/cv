@@ -29,7 +29,7 @@ class App extends React.Component<IProps, IState> {
     componentDidMount() {
         const {selectStage} = this.props
         selectStage("welcome")
-        setTimeout(() => selectStage("cv"), duration * 1000)
+        setTimeout(() => selectStage("cv"), duration * 990)
     }
 
     renderWelcomeStage(style: CSSProperties) {
